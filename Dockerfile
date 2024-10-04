@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     file \
     wget \
+    curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
