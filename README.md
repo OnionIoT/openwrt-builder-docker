@@ -16,17 +16,17 @@ To build the Docker image from the provided Dockerfile:
 3. Run the following command to build the image:
 
    ```bash
-   docker build -t openwrt-sdk-image .
+   docker build -t onion/openwrt-builder .
    ```
 
-This will create an image named openwrt-sdk-image.
+This will create an image named onion/openwrt-builder.
 
 ## Running the Container
 Once the image is built, you can start a container and interact with it:
 
 1. Run the following command to start a container with interactive shell access:
     ```bash
-    docker run -it openwrt-sdk-image
+    docker run -it onion/openwrt-builder
     ```
 2. This will drop you into a bash shell in the container, where you can run OpenWRT SDK and image builder commands.
 
@@ -34,7 +34,7 @@ Once the image is built, you can start a container and interact with it:
 If you need to work with files from your host machine, you can mount a directory into the container using the -v option. For example:
 
 ```bash
-docker run -it -v /path/to/local/dir:/root/openwrt openwrt-sdk-image
+docker run -it -v /path/to/local/dir:/root/openwrt onion/openwrt-builder
 ```
 
 This will mount your local directory to `/root/openwr`t` inside the container.
@@ -49,7 +49,7 @@ If you're running this Docker container on an ARM-based system (like Macs with A
     On your ARM host, install QEMU and the required packages for emulation. Run the following commands:
     ```bash
     sudo apt update
-    sudo apt install qemu qemu-user-static
+    sudo apt install -y qemu-system qemu-user-static binfmt-support
     ```
 2. **Register QEMU for x86_64 Emulation:**
     You need to enable QEMU to interpret the x86_64 binaries inside Docker containers. Run the following command:
@@ -66,7 +66,7 @@ If you're running this Docker container on an ARM-based system (like Macs with A
 4. **Running the OpenWRT SDK Image:**
     Now, you can run the OpenWRT SDK Docker image using QEMU to emulate the x86_64 architecture:
     ```bash
-    docker run --platform linux/amd64 -it openwrt-sdk-image
+    docker run --platform linux/amd64 -it onion/openwrt-builder
     ```
     This will start the container with x86_64 emulation on your ARM system.
 
