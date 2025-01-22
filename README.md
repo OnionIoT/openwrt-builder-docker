@@ -1,4 +1,5 @@
-# openwrt-docker
+# openwrt-builder-docker Docker Image Definition
+
 Docker image with prerequisites for building OpenWRT Packages and Firmware Images for the Omega2. Published as `onion/openwrt-sdk-wrapper` on Docker Hub: https://hub.docker.com/r/onion/openwrt-sdk-wrapper
 
 This Docker container is based on Ubuntu 22.04 and comes pre-configured with all necessary packages to run the OpenWRT SDK and image builder.
